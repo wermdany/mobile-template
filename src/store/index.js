@@ -2,6 +2,9 @@ import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 
+import { store } from "@/config";
+import getters from "./getters";
+
 Vue.use(Vuex);
 
 const requireModule = require.context("./modules", false, /\.js$/);
@@ -16,13 +19,11 @@ const modules = requireModule.keys().reduce((module, path) => {
 }, {});
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
+  getters,
   modules,
   plugins: [
     createPersistedState({
-      key: "vue_store"
+      key: store.STORAGE_KEY
     })
   ]
 });
