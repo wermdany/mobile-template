@@ -28,7 +28,6 @@ const vueI18n = new i18n({
   silentFallbackWarn: true
 });
 
-
 export default vueI18n;
 /**
  * 获取支持的语言列表
@@ -46,10 +45,16 @@ export const languages = {
  */
 export function setLanguage(lang) {
   if (languages.i18n.indexOf(lang) == -1) {
-    warn("[国际化设置]", `i18n 设置语言 '${lang}' 失败，仅支持 ${languages.i18n}`);
+    warn(
+      "[国际化设置]",
+      `i18n 设置语言 '${lang}' 失败，仅支持 ${languages.i18n}`
+    );
   }
   if (languages.vant.indexOf(lang) == -1) {
-    warn("[国际化设置]", `vant 设置语言 '${lang}' 失败，仅支持 ${languages.vant}`);
+    warn(
+      "[国际化设置]",
+      `vant 设置语言 '${lang}' 失败，仅支持 ${languages.vant}`
+    );
   }
   vueI18n.locale = lang;
   document.documentElement.lang = lang;

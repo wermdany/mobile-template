@@ -1,10 +1,6 @@
 export default [
   {
-    path: "",
-    children: [
-      {
-        path: "12"
-      }
-    ]
+    path: "/index",
+    component: () => import("@/views/home")
   }
 ];
