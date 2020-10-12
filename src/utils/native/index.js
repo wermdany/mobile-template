@@ -1,8 +1,4 @@
-import { RE_IOS } from "@/utils/regexp";
-
-const isIOS = UA => RE_IOS.test(UA);
-
-const isAndroid = UA => UA.indexOf("Android") > -1 || UA.indexOf("Linux") > -1;
+import { isAndroid, isIOS } from "@/utils/types";
 /**
  *返回原生页面
  *

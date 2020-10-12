@@ -1,4 +1,4 @@
-import { RE_Base64 } from "../regexp";
+import { RE_Base64, RE_IOS } from "../regexp";
 
 const toString = Object.prototype.toString;
 /**
@@ -73,3 +73,12 @@ export const isBlob = _ => getType(_) === "[object Blob]";
  * 是否是 Base64 数据
  */
 export const isBase64 = _ => RE_Base64.test(_);
+/**
+ * 是否是 Ios
+ */
+export const isIOS = UA => RE_IOS.test(UA);
+/**
+ * 是否是 Android
+ */
+export const isAndroid = UA =>
+  UA.indexOf("Android") > -1 || UA.indexOf("Linux") > -1;

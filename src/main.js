@@ -2,7 +2,6 @@ import Vue from "vue";
 import App from "@/App";
 import router from "@/router";
 import store from "@/store";
-
 //引入第三方包 简单配置
 import "@/packages";
 //引入全局基础样式

@@ -1,6 +1,10 @@
 import { isArray, isDef } from "@/utils/types";
 import { warn } from "@/utils/error";
-
+/**
+ * 是否是 Vue Router
+ * @param {Array} itemRoute
+ * @param {String} path
+ */
 export function isVueRoutes(itemRoute, path) {
   if (!isArray(itemRoute)) {
     warn("[路由格式错误]", `文件 '${path}' 不是一个数组`);
