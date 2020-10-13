@@ -1,6 +1,6 @@
 const state = {
   navBar: {
-    title: "",
+    title: "1331",
     left: [],
     right: []
   }
