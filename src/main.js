@@ -11,6 +11,9 @@ import i18n from "@/packages/vue-i18n";
 //引入 vant 配置
 import "@/packages/vant";
 
+//导航守卫
+import "@/router/beforeEach";
+
 Vue.config.productionTip = false;
 
 new Vue({
