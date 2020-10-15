@@ -3,7 +3,7 @@
     <ul>
       <router-link to="/index"> to index</router-link>
       <input type="text" name="" id="" />
-      <li v-for="i in 10" :key="i">
+      <li v-for="i in 1000" :key="i">
         {{ i + "B" }}
 
         <span>111</span>

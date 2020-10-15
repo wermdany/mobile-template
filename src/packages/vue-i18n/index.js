@@ -4,26 +4,31 @@ import { warn } from "@/utils/error";
 import Vue from "vue";
 import i18n from "vue-i18n";
 import { Locale } from "vant";
+import { system } from "@/config";
 
 const messages = {
+  [system.defaultLanguage]: require("@/assets/lang/en-US.json"),
+  zh: require("@/assets/lang/zh-CN.json"),
   "zh-CN": require("@/assets/lang/zh-CN.json"),
-  "en-US": require("@/assets/lang/en.json"),
   "zh-MO": require("@/assets/lang/zh-MO.json"),
+  ja: require("@/assets/lang/ja-JP.json"),
   "ja-JP": require("@/assets/lang/ja-JP.json")
 };
 
 const vantI18n = {
+  [system.defaultLanguage]: require("vant/lib/locale/lang/en-US").default,
+  zh: require("vant/lib/locale/lang/zh-CN").default,
   "zh-CN": require("vant/lib/locale/lang/zh-CN").default,
-  "en-US": require("vant/lib/locale/lang/en-US").default,
   "zh-MO": require("vant/lib/locale/lang/zh-HK").default,
+  ja: require("vant/lib/locale/lang/ja-JP").default,
   "ja-JP": require("vant/lib/locale/lang/ja-JP").default
 };
 
 Vue.use(i18n);
-Locale.use("en-US", vantI18n["en-US"]);
+Locale.use(system.defaultLanguage, vantI18n[system.defaultLanguage]);
 
 const vueI18n = new i18n({
-  locale: "en-US",
+  locale: system.defaultLanguage,
   messages,
   silentFallbackWarn: true
 });
@@ -44,13 +49,13 @@ export const languages = {
  * @param {string} lang
  */
 export function setLanguage(lang) {
-  if (languages.i18n.indexOf(lang) == -1) {
+  if (!languages.i18n.includes(lang)) {
     warn(
       "[国际化设置]",
       `i18n 设置语言 '${lang}' 失败，仅支持 ${languages.i18n}`
     );
   }
-  if (languages.vant.indexOf(lang) == -1) {
+  if (!languages.vant.includes(lang)) {
     warn(
       "[国际化设置]",
       `vant 设置语言 '${lang}' 失败，仅支持 ${languages.vant}`

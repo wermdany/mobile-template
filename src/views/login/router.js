@@ -1,6 +1,13 @@
+import LayOut from "@/layout";
 export default [
   {
     path: "/a",
-    component: () => import("@/views/login")
+    component: LayOut,
+    children: [
+      {
+        path: "",
+        component: () => import("@/views/login")
+      }
+    ]
   }
 ];

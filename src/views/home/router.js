@@ -1,8 +1,9 @@
-import LayOut from "@/layout"
+import LayOut from "@/layout";
 export default [
   {
     path: "/",
     component: LayOut,
+    redirect: "/index",
     children: [
       {
         path: "index",
