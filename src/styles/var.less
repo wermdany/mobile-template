@@ -4,8 +4,8 @@
 @primary :#030383;
 @textColor: #333333;
 @fontSize: 15px;
-
-
+@transparent: transparent;
+@white: #fff;
 /* navBar */
 // 导航栏高度
 @systemNavBarHeight: 50px;
@@ -19,10 +19,14 @@
 @systemNavBarLeftAndRightSpace: 8px;
 // 导航栏 left & right color
 @systemNavBarLeftAndRightColor: inherit;
-// 导航栏 背景色
-@systemNavBarBackgroundColor: white;
-// 导航栏字体色
-@systemNavBarColor: @textColor;
+// 导航栏 背景色 拥有占位
+@systemNavBarBackgroundColor-placeholder: @white;
+// 导航栏 背景色 无占位
+@systemNavBarBackgroundColor: @transparent;
+// 导航栏字体色 拥有占位
+@systemNavBarColor-placeholder: @textColor;
+// 导航栏字体色 无占位
+@systemNavBarColor: @white;
 
 :export {
   primary: @primary

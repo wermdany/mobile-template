@@ -1,5 +1,5 @@
 <template>
-  <header class="nav-bar">
+  <header class="nav-bar" :class="{ 'no-placeholder': placeholder }">
     <van-nav-bar fixed :border="isBorder">
       <template #title>{{ title }}</template>
       <template #left>
@@ -39,7 +39,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("navbar", ["title", "left", "right"])
+    ...mapState("navbar", ["title", "left", "right", "placeholder"])
   }
 };
 </script>
@@ -47,7 +47,19 @@ export default {
 //设置 navbar 高度
 .nav-bar {
   height: @systemNavBarHeight;
-  color: @systemNavBarColor;
+  color: @systemNavBarColor-placeholder;
+  &.no-placeholder {
+    height: auto;
+    color: @systemNavBarColor;
+  }
+}
+.no-placeholder {
+  .van-nav-bar {
+    background-color: @transparent;
+  }
+  .van-nav-bar__title {
+    color: @white;
+  }
 }
 .van-nav-bar__left,
 .van-nav-bar__right {

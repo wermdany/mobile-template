@@ -9,4 +9,3 @@
     </ul>
   </div>
 </template>
-<script>

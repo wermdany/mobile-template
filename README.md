@@ -6,8 +6,8 @@
 
 ### 和CSS变量相关的配置
 
-1.  `src/styles/var.less`
-2.  `src/styles/vant-var.less` 
+1. `src/styles/var.less`
+2. `src/styles/vant-var.less`
 
 以上两个文件修改
 
@@ -18,15 +18,5 @@
 1. `src/config/*`
 
 以上的位置寻找对应文件修改。
-
-## 布局组件
-
-主要有头部导航（NavBar）、主体（section）、底部标签栏（TabBar）三部分组成。
-
-### 头部导航栏（NavBar）
-
-基于 `vant-NavBar` 实现，
-
-
 
 # sunliu

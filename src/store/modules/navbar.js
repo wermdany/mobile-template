@@ -5,7 +5,8 @@ import { layout } from "@/config";
 const state = {
   title: "",
   left: [],
-  right: []
+  right: [],
+  placeholder: false
 };
 
 const mutations = {
@@ -35,6 +36,9 @@ const mutations = {
     } else {
       state.left[type](payload);
     }
+  },
+  TOGGLE_PLACEHOLDER(state, payload) {
+    state.placeholder = payload;
   }
 };
 
@@ -95,6 +99,14 @@ const actions = {
    */
   setRightIconUnshift({ commit }, payload) {
     commit("SET_RIGHT_ICON", { payload, type: "unshift" });
+  },
+  /**
+   *切换顶部是否占位
+   * @param {*} { commit }
+   * @param {Boolean} payload
+   */
+  togglePlaceholder({ commit }, payload) {
+    commit("TOGGLE_PLACEHOLDER", payload);
   },
   /**
    * 设置默认情况下的 NavBar 信息
