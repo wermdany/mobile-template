@@ -6,8 +6,8 @@
 
 ### 和CSS变量相关的配置
 
-1. `src/styles/var.less`
-2. `src/styles/vant-var.less`
+1. `src/styles/var.less` [查看](/src/styles/var.less)
+2. `src/styles/vant-var.less` [查看](/src/styles/vant-var.less)
 
 以上两个文件修改
 
@@ -15,7 +15,7 @@
 
 ### 和项目相关的配置 (JS)
 
-1. `src/config/*`
+1. `src/config/*` [查看](/src/config/index.js)
 
 以上的位置寻找对应文件修改。
 
