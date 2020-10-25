@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === "production";
+
 module.exports = {
   root: true,
   env: {
@@ -8,7 +10,8 @@ module.exports = {
     parser: "babel-eslint"
   },
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off"
+    "no-console": isProd ? "warn" : "off",
+    "no-debugger": isProd ? "warn" : "off",
+    semi: "error"
   }
 };

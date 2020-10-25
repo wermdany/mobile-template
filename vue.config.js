@@ -9,12 +9,14 @@ const publicPath = ENV.VUE_APP_PUBLIC_PATH;
 
 module.exports = {
   publicPath: isDev ? "/" : publicPath,
+  productionSourceMap: false,
   css: {
     loaderOptions: {
       less: less
     }
   },
   configureWebpack: {
+    devtool: "source-map",
     plugins: plugins
   }
 };

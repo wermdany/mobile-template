@@ -32,7 +32,9 @@ function setLanguageByLocal(to) {
     }
   }
 }
-
+/**
+ * 页面首次加载时
+ */
 export default (to, form) => {
   console.log("onLaunch");
   setLanguageByLocal(to, form);

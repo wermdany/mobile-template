@@ -3,10 +3,16 @@ import { isFun } from "@/utils/types";
 import { layout } from "@/config";
 
 const state = {
+  //标题
   title: "",
+  //左侧按钮组
   left: [],
+  //右侧按钮组
   right: [],
-  placeholder: false
+  //是否占位？
+  placeholder: false,
+  //是否使用
+  use: true
 };
 
 const mutations = {

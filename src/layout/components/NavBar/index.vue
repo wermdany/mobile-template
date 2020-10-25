@@ -1,5 +1,5 @@
 <template>
-  <header class="nav-bar" :class="{ 'no-placeholder': placeholder }">
+  <header v-if="use" class="nav-bar" :class="{ 'no-placeholder': placeholder }">
     <van-nav-bar fixed :border="isBorder">
       <template #title>{{ title }}</template>
       <template #left>
@@ -39,7 +39,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("navbar", ["title", "left", "right", "placeholder"])
+    ...mapState("navbar", ["title", "left", "right", "placeholder", "use"])
   }
 };
 </script>
