@@ -1,5 +1,6 @@
 const less = require("./vue-cli/less");
 const plugins = require("./vue-cli/plugins");
+const devServer = require("./vue-cli/devServer");
 const { getEnv, isDev } = require("./vue-cli/env");
 const ENV = getEnv();
 
@@ -18,5 +19,6 @@ module.exports = {
   configureWebpack: {
     devtool: "source-map",
     plugins: plugins
-  }
+  },
+  devServer
 };
