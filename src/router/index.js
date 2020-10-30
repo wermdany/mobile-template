@@ -32,3 +32,10 @@ const router = new VueRouter({
 });
 
 export default router;
+
+/**
+ * 返回页面
+ */
+export function back() {
+  router.back();
+}

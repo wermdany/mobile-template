@@ -12,3 +12,8 @@ export default {
   }
 };
 </script>
+<style lang="less" scoped>
+.go-back {
+  display: flex;
+}
+</style>

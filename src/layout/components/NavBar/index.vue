@@ -1,28 +1,33 @@
 <template>
   <header v-if="use" class="nav-bar" :class="{ 'no-placeholder': placeholder }">
-    <van-nav-bar fixed :border="isBorder">
-      <template #title>{{ title }}</template>
-      <template #left>
-        <div
-          class="van-nav-bar__left--item"
-          v-for="item in left"
-          :key="item.id"
-          v-on="item.event"
-        >
-          <component :is="item.icon" />
-        </div>
-      </template>
-      <template #right>
-        <div
-          class="van-nav-bar__right--item"
-          v-for="item in right"
-          :key="item.id"
-          v-on="item.event"
-        >
-          <component :is="item.icon" />
-        </div>
-      </template>
-    </van-nav-bar>
+    <transition name="van-slide-down">
+      <van-nav-bar fixed :border="isBorder" :style="!placeholder ? styles : {}">
+        <template #title>
+          <component v-if="isIcon" :is="title.content" />
+          <span v-if="!isIcon">{{ $t(title.content) }}</span>
+        </template>
+        <template #left>
+          <div
+            class="van-nav-bar__left--item"
+            v-for="item in left"
+            :key="item.id"
+            v-on="item.event"
+          >
+            <component :is="item.icon" />
+          </div>
+        </template>
+        <template #right>
+          <div
+            class="van-nav-bar__right--item"
+            v-for="item in right"
+            :key="item.id"
+            v-on="item.event"
+          >
+            <component :is="item.icon" />
+          </div>
+        </template>
+      </van-nav-bar>
+    </transition>
   </header>
 </template>
 <script>
@@ -39,7 +44,17 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("navbar", ["title", "left", "right", "placeholder", "use"])
+    ...mapState("navbar", [
+      "title",
+      "left",
+      "right",
+      "placeholder",
+      "use",
+      "styles"
+    ]),
+    isIcon() {
+      return this.title.type === "icon";
+    }
   }
 };
 </script>
@@ -53,9 +68,12 @@ export default {
     color: @systemNavBarColor;
   }
 }
+.van-nav-bar {
+  background: @systemNavBarBackgroundColor-placeholder;
+}
 .no-placeholder {
   .van-nav-bar {
-    background-color: @transparent;
+    background: @transparent;
   }
   .van-nav-bar__title {
     color: @white;

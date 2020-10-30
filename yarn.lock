@@ -2240,6 +2240,11 @@ caller-path@^2.0.0:
   dependencies:
     caller-callsite "^2.0.0"
 
+callforth@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npm.taobao.org/callforth/download/callforth-0.3.1.tgz#d40f610c7dd47d0011fd84bac32b3fe11cff1785"
+  integrity sha1-1A9hDH3UfQAR/YS6wys/4Rz/F4U=
+
 callsites@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/callsites/download/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
@@ -5052,10 +5057,20 @@ js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+jsbarcode@^3.11.3:
+  version "3.11.3"
+  resolved "https://registry.npm.taobao.org/jsbarcode/download/jsbarcode-3.11.3.tgz#1c8fb9b5c7d4452e571930801b00e12094a7051e"
+  integrity sha1-HI+5tcfURS5XGTCAGwDhIJSnBR4=
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.npm.taobao.org/jsbn/download/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
+
+jsencrypt@^3.0.0-rc.1:
+  version "3.0.0-rc.1"
+  resolved "https://registry.npm.taobao.org/jsencrypt/download/jsencrypt-3.0.0-rc.1.tgz#0e0a4744ba43cc557fb5cf62fe8646bceb561b1c"
+  integrity sha1-DgpHRLpDzFV/tc9i/oZGvOtWGxw=
 
 jsesc@^2.5.1:
   version "2.5.2"
@@ -6767,6 +6782,11 @@ q@^1.1.2:
   resolved "https://registry.npm.taobao.org/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qrious@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npm.taobao.org/qrious/download/qrious-4.0.2.tgz#09c4d4079d2b961617f62c69cff3b9bb66a39693"
+  integrity sha1-CcTUB50rlhYX9ixpz/O5u2ajlpM=
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.npm.taobao.org/qs/download/qs-6.7.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fqs%2Fdownload%2Fqs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
@@ -7106,6 +7126,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rtcpeerconnection-shim@^1.2.15:
+  version "1.2.15"
+  resolved "https://registry.npm.taobao.org/rtcpeerconnection-shim/download/rtcpeerconnection-shim-1.2.15.tgz#e7cc189a81b435324c4949aa3dfb51888684b243"
+  integrity sha1-58wYmoG0NTJMSUmqPftRiIaEskM=
+  dependencies:
+    sdp "^2.6.0"
+
 run-async@^2.4.0:
   version "2.4.1"
   resolved "https://registry.npm.taobao.org/run-async/download/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
@@ -7169,6 +7196,11 @@ schema-utils@^2.0.0, schema-utils@^2.5.0, schema-utils@^2.6.5, schema-utils@^2.6
     "@types/json-schema" "^7.0.5"
     ajv "^6.12.4"
     ajv-keywords "^3.5.2"
+
+sdp@^2.12.0, sdp@^2.6.0:
+  version "2.12.0"
+  resolved "https://registry.npm.taobao.org/sdp/download/sdp-2.12.0.tgz#338a106af7560c86e4523f858349680350d53b22"
+  integrity sha1-M4oQavdWDIbkUj+Fg0loA1DVOyI=
 
 select-hose@^2.0.0:
   version "2.0.0"
@@ -8324,6 +8356,16 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-qrcode-reader@^2.3.14:
+  version "2.3.14"
+  resolved "https://registry.npm.taobao.org/vue-qrcode-reader/download/vue-qrcode-reader-2.3.14.tgz#d2b105570ebad91f6d631e82a78dd715c15fdf4a"
+  integrity sha1-0rEFVw662R9tYx6Cp43XFcFf30o=
+  dependencies:
+    callforth "^0.3.1"
+    core-js "^3.6.5"
+    vue "^2.6.11"
+    webrtc-adapter "7.7.0"
+
 vue-router@^3.2.0:
   version "3.4.3"
   resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.4.3.tgz?cache=0&sync_timestamp=1600589412110&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-router%2Fdownload%2Fvue-router-3.4.3.tgz#fa93768616ee338aa174f160ac965167fa572ffa"
@@ -8528,6 +8570,14 @@ webpack@^4.0.0:
     terser-webpack-plugin "^1.4.3"
     watchpack "^1.7.4"
     webpack-sources "^1.4.1"
+
+webrtc-adapter@7.7.0:
+  version "7.7.0"
+  resolved "https://registry.npm.taobao.org/webrtc-adapter/download/webrtc-adapter-7.7.0.tgz#e56ff25f925177ac553a7c49323ca4108d2b5f4d"
+  integrity sha1-5W/yX5JRd6xVOnxJMjykEI0rX00=
+  dependencies:
+    rtcpeerconnection-shim "^1.2.15"
+    sdp "^2.12.0"
 
 websocket-driver@0.6.5:
   version "0.6.5"

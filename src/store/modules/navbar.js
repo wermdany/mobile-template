@@ -1,10 +1,10 @@
-import { isFun } from "@/utils/types";
+import { isFun, isString } from "@/utils/types";
 
 import { layout } from "@/config";
 
 const state = {
   //标题
-  title: "",
+  title: {},
   //左侧按钮组
   left: [],
   //右侧按钮组
@@ -12,13 +12,31 @@ const state = {
   //是否占位？
   placeholder: false,
   //是否使用
-  use: true
+  use: true,
+  //样式
+  styles: {
+    background: "",
+    color: ""
+  }
 };
 
 const mutations = {
+  /**
+   * 设置title
+   * @date 29/10/2020
+   * @param {*} state
+   * @param {*} payload
+   */
   SET_TITLE(state, payload) {
     state.title = payload;
   },
+  /**
+   * 设置左侧 icon
+   *
+   * @date 29/10/2020
+   * @param {*} state
+   * @param {*} { payload, type = "default" }
+   */
   SET_LEFT_ICON(state, { payload, type = "default" }) {
     // 默认点击事件
     if (payload?.event && isFun(payload.event)) {
@@ -31,7 +49,13 @@ const mutations = {
       state.left[type](payload);
     }
   },
-
+  /**
+   * 设置右侧 icon
+   *
+   * @date 29/10/2020
+   * @param {*} state
+   * @param {*} { payload, type = "default" }
+   */
   SET_RIGHT_ICON(state, { payload, type = "default" }) {
     // 默认点击事件
     if (payload?.event && isFun(payload.event)) {
@@ -43,8 +67,28 @@ const mutations = {
       state.left[type](payload);
     }
   },
+  /**
+   * 设置 placeholder
+   *
+   * @date 29/10/2020
+   * @param {*} state
+   * @param {*} payload
+   */
   TOGGLE_PLACEHOLDER(state, payload) {
     state.placeholder = payload;
+  },
+  /**
+   * 设置标题栏 styles
+   *
+   * @date 29/10/2020
+   * @param {*} state
+   * @param {*} payload
+   */
+  SET_STYLES(state, payload) {
+    state.styles = payload;
+  },
+  TOGGLE_USE(state, payload) {
+    state.use = payload;
   }
 };
 
@@ -115,6 +159,22 @@ const actions = {
     commit("TOGGLE_PLACEHOLDER", payload);
   },
   /**
+   * 设置标题栏样式
+   * @param {*} { commit }
+   * @param {*} payload
+   */
+  setStyles({ commit }, payload) {
+    commit("SET_STYLES", payload);
+  },
+  /**
+   * 设置标题栏是否显示
+   * @param {*} { commit }
+   * @param {*} payload
+   */
+  toggleUse({ commit }, payload) {
+    commit("TOGGLE_USE", payload);
+  },
+  /**
    * 设置默认情况下的 NavBar 信息
    * @param {*} { commit }
    */
@@ -122,6 +182,40 @@ const actions = {
     commit("SET_TITLE", layout.NavBarDefaultTitle);
     commit("SET_LEFT_ICON", { payload: layout.NavBarDefaultLeft });
     commit("SET_RIGHT_ICON", { payload: layout.NavBarDefaultRight });
+    commit("SET_STYLES", layout.NavBarDefaultStyles);
+  },
+  setCurrentState({ commit }, payload) {
+    //设置 title 信息
+    if (payload.title) {
+      let P = {};
+      if (isString(payload.title)) {
+        P = {
+          type: "text",
+          content: payload.title
+        };
+      }
+      commit("SET_TITLE", P);
+    }
+    //设置 left 信息
+    if (payload.leftBtn) {
+      commit("SET_LEFT_ICON", {
+        payload: payload.leftBtn
+      });
+    }
+    //设置 right 信息
+    if (payload.leftBtn) {
+      commit("SET_RIGHT_ICON", {
+        payload: payload.rightBtn
+      });
+    }
+    // 设置 placeholder
+    // eslint-disable-next-line no-prototype-builtins
+    if (payload.hasOwnProperty("placeholder")) {
+      commit("TOGGLE_PLACEHOLDER", payload.placeholder);
+    }
+    if (payload.styles) {
+      commit("SET_STYLES", payload.styles);
+    }
   }
 };
 

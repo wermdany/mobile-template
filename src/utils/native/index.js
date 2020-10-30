@@ -9,10 +9,10 @@ export function backToNative() {
   const UA = window.navigator.userAgent;
   if (isIOS(UA)) {
     // eslint-disable-next-line no-undef
-    sysObj.backToPreActivity();
+    webkit.messageHandlers.backToPageUp.postMessage({});
   }
   if (isAndroid(UA)) {
     // eslint-disable-next-line no-undef
-    webkit.messageHandlers.backToPageUp.postMessage({});
+    sysObj.backToPreActivity();
   }
 }
