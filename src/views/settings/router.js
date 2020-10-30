@@ -9,7 +9,7 @@ export default [
         component: () => import("@/views/settings/children"),
         meta: {
           navBar: {
-            title: "Setting.Settings"
+            title: "设置"
           }
         }
       }

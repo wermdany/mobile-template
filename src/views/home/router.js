@@ -10,13 +10,9 @@ export default [
         component: () => import("@/views/home/children"),
         meta: {
           tabBar: {
-            name: "BNUPayHome"
+            name: ""
           }
         }
-      },
-      {
-        path: "scan",
-        component: () => import("@/views/home/children/scan")
       }
     ]
   }

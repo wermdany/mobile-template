@@ -1,8 +1,7 @@
 import axios from "axios";
 import { ENV } from "@/utils/env";
 import { axios as axiosConfig } from "@/config";
-import { Toast } from "vant";
-import { Dialog } from "vant";
+import { Toast, Dialog } from "vant";
 
 // 公共请求基地址
 const VUE_APP_HTTP_BASE_URL = ENV.VUE_APP_HTTP_BASE_URL;

@@ -12,12 +12,7 @@ const state = {
   //是否占位？
   placeholder: false,
   //是否使用
-  use: true,
-  //样式
-  styles: {
-    background: "",
-    color: ""
-  }
+  use: true
 };
 
 const mutations = {
@@ -30,6 +25,7 @@ const mutations = {
   SET_TITLE(state, payload) {
     state.title = payload;
   },
+
   /**
    * 设置左侧 icon
    *
@@ -49,6 +45,7 @@ const mutations = {
       state.left[type](payload);
     }
   },
+
   /**
    * 设置右侧 icon
    *
@@ -67,6 +64,7 @@ const mutations = {
       state.left[type](payload);
     }
   },
+
   /**
    * 设置 placeholder
    *
@@ -77,16 +75,14 @@ const mutations = {
   TOGGLE_PLACEHOLDER(state, payload) {
     state.placeholder = payload;
   },
+
   /**
-   * 设置标题栏 styles
+   * 设置 use
    *
    * @date 29/10/2020
    * @param {*} state
    * @param {*} payload
    */
-  SET_STYLES(state, payload) {
-    state.styles = payload;
-  },
   TOGGLE_USE(state, payload) {
     state.use = payload;
   }
@@ -110,6 +106,7 @@ const actions = {
   setLeftIcon({ commit }, payload) {
     commit("SET_LEFT_ICON", { payload, type: "default" });
   },
+
   /**
    * 设置左侧 icon 后置插入
    * @param {*} { commit }
@@ -118,6 +115,7 @@ const actions = {
   setLeftIconPush({ commit }, payload) {
     commit("SET_LEFT_ICON", { payload, type: "push" });
   },
+
   /**
    * 设置左侧 icon 前置插入
    * @param {*} { commit }
@@ -126,6 +124,7 @@ const actions = {
   setLeftIconUnShift({ commit }, payload) {
     commit("SET_LEFT_ICON", { payload, type: "unshift" });
   },
+
   /**
    * 设置右侧 icon
    * @param {*} { commit }
@@ -134,6 +133,7 @@ const actions = {
   setRightIcon({ commit }, payload) {
     commit("SET_RIGHT_ICON", { payload, type: "default" });
   },
+
   /**
    * 设置右侧 icon 后置插入
    * @param {*} { commit }
@@ -142,6 +142,7 @@ const actions = {
   setRightIconPush({ commit }, payload) {
     commit("SET_RIGHT_ICON", { payload, type: "push" });
   },
+
   /**
    * 设置右侧 icon 前置插入
    * @param {*} { commit }
@@ -150,6 +151,7 @@ const actions = {
   setRightIconUnshift({ commit }, payload) {
     commit("SET_RIGHT_ICON", { payload, type: "unshift" });
   },
+
   /**
    *切换顶部是否占位
    * @param {*} { commit }
@@ -158,14 +160,7 @@ const actions = {
   togglePlaceholder({ commit }, payload) {
     commit("TOGGLE_PLACEHOLDER", payload);
   },
-  /**
-   * 设置标题栏样式
-   * @param {*} { commit }
-   * @param {*} payload
-   */
-  setStyles({ commit }, payload) {
-    commit("SET_STYLES", payload);
-  },
+
   /**
    * 设置标题栏是否显示
    * @param {*} { commit }
@@ -174,6 +169,7 @@ const actions = {
   toggleUse({ commit }, payload) {
     commit("TOGGLE_USE", payload);
   },
+
   /**
    * 设置默认情况下的 NavBar 信息
    * @param {*} { commit }
@@ -182,7 +178,6 @@ const actions = {
     commit("SET_TITLE", layout.NavBarDefaultTitle);
     commit("SET_LEFT_ICON", { payload: layout.NavBarDefaultLeft });
     commit("SET_RIGHT_ICON", { payload: layout.NavBarDefaultRight });
-    commit("SET_STYLES", layout.NavBarDefaultStyles);
   },
   setCurrentState({ commit }, payload) {
     //设置 title 信息
@@ -212,9 +207,6 @@ const actions = {
     // eslint-disable-next-line no-prototype-builtins
     if (payload.hasOwnProperty("placeholder")) {
       commit("TOGGLE_PLACEHOLDER", payload.placeholder);
-    }
-    if (payload.styles) {
-      commit("SET_STYLES", payload.styles);
     }
   }
 };

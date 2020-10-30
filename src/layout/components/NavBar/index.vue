@@ -1,10 +1,10 @@
 <template>
   <header v-if="use" class="nav-bar" :class="{ 'no-placeholder': placeholder }">
     <transition name="van-slide-down">
-      <van-nav-bar fixed :border="isBorder" :style="!placeholder ? styles : {}">
+      <van-nav-bar fixed :border="isBorder">
         <template #title>
           <component v-if="isIcon" :is="title.content" />
-          <span v-if="!isIcon">{{ $t(title.content) }}</span>
+          <span v-if="!isIcon">{{ title.content }}</span>
         </template>
         <template #left>
           <div
@@ -44,14 +44,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("navbar", [
-      "title",
-      "left",
-      "right",
-      "placeholder",
-      "use",
-      "styles"
-    ]),
+    ...mapState("navbar", ["title", "left", "right", "placeholder", "use"]),
     isIcon() {
       return this.title.type === "icon";
     }

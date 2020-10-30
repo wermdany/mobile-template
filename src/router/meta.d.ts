@@ -12,10 +12,6 @@ export interface Meta {
     leftBtn?: Btn;
     rightBtn?: Btn;
     placeholder?: Boolean | true;
-    styles?: {
-      color: String;
-      background: String;
-    };
     use?: Boolean | true;
   };
   tabBar?: {

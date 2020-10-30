@@ -1,23 +1,15 @@
 <template>
   <div class="tab-bar">
     <transition name="van-slide-up">
-      <van-tabbar
-        v-if="use"
-        v-model="currentName"
-        :active-color="primary"
-        inactive-color="rgba(0,0,0,0.5)"
-      >
+      <van-tabbar v-if="use" v-model="currentName" :active-color="primary">
         <van-tabbar-item
           v-for="item in list"
           @click="change(item.name)"
+          :icon="item.icon"
           :key="item.id"
           :name="item.name"
         >
-          <template #icon="{active}">
-            <img v-if="active" :src="item.icon.b" />
-            <img v-else :src="item.icon.a" />
-          </template>
-          <span>{{ $t(item.text) }}</span>
+          <span>{{ item.text }}</span>
         </van-tabbar-item>
       </van-tabbar>
     </transition>
@@ -26,7 +18,6 @@
 <script>
 import { Tabbar, TabbarItem } from "vant";
 import styleVar from "@/styles/var.less";
-import { backToNative } from "@/utils/native";
 import { mapState } from "vuex";
 export default {
   name: "TabBar",
@@ -39,30 +30,21 @@ export default {
     this.list = [
       {
         to: "/settings/index",
-        text: "Setting.Settings",
-        icon: {
-          a: require("@/assets/images/setting3x.png"),
-          b: require("@/assets/images/settingSelected3x.png")
-        },
-        name: "Settings"
+        text: "index",
+        icon: "home-o",
+        name: "index"
       },
       {
         to: "/home/index",
-        text: "Setting.BNUPayHome",
-        icon: {
-          a: require("@/assets/images/home3x.png"),
-          b: require("@/assets/images/homeSelected3x.png")
-        },
-        name: "BNUPayHome"
+        text: "home",
+        icon: "friends-o",
+        name: "home"
       },
       {
         to: "",
-        text: "Setting.returnBNUPay",
-        icon: {
-          a: require("@/assets/images/backBNU3x.png"),
-          b: require("@/assets/images/backBNUSelected3x.png")
-        },
-        name: "returnBNUPay"
+        text: "my",
+        icon: "setting-o",
+        name: "my"
       }
     ];
     return {};
@@ -80,13 +62,6 @@ export default {
   },
   methods: {
     change(current) {
-      if (current === "returnBNUPay") {
-        this.$nextTick(() => {
-          //TODO: 延迟后跳转
-          backToNative();
-        });
-        return;
-      }
       const item = this.list.find(v => v.name === current);
       if (item && item.to && this.$route.path != item.to) {
         this.$router.replace(item.to);
