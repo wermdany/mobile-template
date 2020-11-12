@@ -3,7 +3,7 @@ export default [
   {
     path: "/home",
     component: LayOut,
-    redirect: "/index",
+    redirect: "/home/index",
     children: [
       {
         path: "index",

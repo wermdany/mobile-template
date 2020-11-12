@@ -12,6 +12,7 @@
     "amfe-flexible": "^2.2.1",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "emoji-regex": "^9.2.0",
     "jsbarcode": "^3.11.3",
     "jsencrypt": "^3.0.0-rc.1",
     "qrious": "^4.0.2",

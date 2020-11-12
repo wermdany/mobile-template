@@ -5,6 +5,8 @@ import { isVueRoutes } from "@/utils/validator";
 
 import { isDev } from "@/utils/env";
 
+import { router as routerConfig } from "@/config";
+
 Vue.use(VueRouter);
 
 const readFile = require.context("@/views", true, /^\.\/\w+\/router\.js$/);
@@ -19,7 +21,10 @@ const routes = readFile.keys().reduce((modules, path) => {
 
   return modules.concat(item);
 }, []);
-
+routes.unshift({
+  path: "",
+  redirect: routerConfig.HOME_PAGE_REDIRECT_PATH
+});
 const router = new VueRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
