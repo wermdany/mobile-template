@@ -24,10 +24,10 @@ export function findEle(parent, type) {
     : parent.querySelector(type);
 }
 /**
- * 触发事件
+ * 手动触发一个事件
  *
  * @export
- * @param {Element} el 父节点
+ * @param {Element} el 节点
  * @param {String} type 事件名
  * @returns
  */

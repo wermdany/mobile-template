@@ -16,6 +16,12 @@ import "@/router/beforeEach";
 
 Vue.config.productionTip = false;
 
+window.onload = function() {
+  document.addEventListener("gesturestart", function(event) {
+    event.preventDefault();
+  });
+};
+
 new Vue({
   i18n,
   router,
