@@ -18,10 +18,10 @@ export function getLocalLanguages() {
  * @param {*} type 标签名
  * @returns
  */
-export function findEle(parent, type) {
-  return parent.tagName.toLowerCase() === type
-    ? parent
-    : parent.querySelector(type);
+export function findEle(el, type) {
+  return el.tagName.toLowerCase() === type.toLowerCase()
+    ? el
+    : el.querySelector(type);
 }
 /**
  * 手动触发一个事件

@@ -1,26 +1,26 @@
 <template>
   <div class="home-index">
     <p>过滤 emoji 表情输入</p>
-    <van-field label="输入" v-model.trim="text" v-no-emoji></van-field>
-    <p>输入1</p>
-    <self-input type="text" v-model.trim="text1" v-no-emoji />
-    <p>输入1</p>
-    <self-input type="text" v-model.trim="text3" v-no-emoji />
+    <van-field
+      label="输入"
+      v-model.trim="text"
+      v-input-limit="emojiReg"
+    ></van-field>
     <p>原始</p>
-    <input type="text" v-model.trim="text2" v-no-emoji />
+    <input type="text" v-model.trim="text2" v-input-limit="emojiReg" />
   </div>
 </template>
 <script>
-import { noEmoji } from "@/directives";
-import SelfInput from "@/components/SelfInput";
 import { Field } from "vant";
+import inputLimit from "@/directives/limit";
+import emojiReg from "emoji-regex";
 export default {
   name: "homeIndex",
   components: {
-    vanField: Field,
-    SelfInput
+    vanField: Field
   },
   data() {
+    this.emojiReg = emojiReg();
     return {
       text: "",
       text1: "",
@@ -28,22 +28,8 @@ export default {
       text3: ""
     };
   },
-  mounted() {
-    console.log(this.$refs.i);
-  },
-  methods: {
-    focus() {
-      const scrollTop = document.documentElement.scrollTop;
-      const pageYOffset = window.pageYOffset;
-      const body = document.body.scrollTop;
-      // window.scrollTo(0, e.offsetTop);
-
-      console.log(window.screenTop);
-      console.log(scrollTop, pageYOffset, body);
-    }
-  },
   directives: {
-    noEmoji
+    inputLimit
   }
 };
 </script>
