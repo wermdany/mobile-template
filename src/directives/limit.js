@@ -38,43 +38,43 @@ export default {
     } else {
       warn("[limit]", `${binding.expression} is not a function or regexp`);
     }
-    input.addEventListener(
-      "compositionstart",
-      function() {
-        input._composing = true;
-      },
-      false
-    );
-    input.addEventListener(
-      "compositionend",
-      function(e) {
-        const wish = filter(e.target.value);
-        input._composing = false;
-        //只有存在不合理的才会格式化，ios光标跳至最后
-        if (e.target.value !== wish) {
+    input._compositionstart = function() {
+      input._composing = true;
+    };
+    input._input = function(e) {
+      const wish = filter(e.target.value);
+      //减少混合输入下input频繁触发，只有存在不合理的才会格式化，ios光标跳至最后
+      if (!input._composing && e.target.value !== wish) {
+        e.target.value = wish;
+        setTimeout(function() {
           e.target.value = wish;
-          setTimeout(function() {
-            e.target.value = wish;
-            e.target.dispatchEvent(new InputEvent("input"));
-          });
-        }
-      },
-      false
-    );
-    input.addEventListener(
-      "input",
-      function(e) {
-        const wish = filter(e.target.value);
-        //减少混合输入下input频繁触发，只有存在不合理的才会格式化，ios光标跳至最后
-        if (!input._composing && e.target.value !== wish) {
+          e.target.dispatchEvent(new InputEvent("input"));
+        });
+      }
+    };
+    input._compositionend = function(e) {
+      const wish = filter(e.target.value);
+      input._composing = false;
+      //只有存在不合理的才会格式化，ios光标跳至最后
+      if (e.target.value !== wish) {
+        e.target.value = wish;
+        setTimeout(function() {
           e.target.value = wish;
-          setTimeout(function() {
-            e.target.value = wish;
-            e.target.dispatchEvent(new InputEvent("input"));
-          });
-        }
-      },
-      false
-    );
+          e.target.dispatchEvent(new InputEvent("input"));
+        });
+      }
+    };
+    input.addEventListener("compositionstart", input._compositionstart, false);
+    input.addEventListener("compositionend", input._compositionend, false);
+    input.addEventListener("input", input._input, false);
+  },
+  unbind(el) {
+    let input = findEle(el, "input");
+    if (!input) {
+      input = findEle(el, "textarea");
+    }
+    input.removeEventListener("compositionstart", input._compositionstart);
+    input.removeEventListener("compositionend", input._compositionend);
+    input.removeEventListener("input", input._input);
   }
 };
