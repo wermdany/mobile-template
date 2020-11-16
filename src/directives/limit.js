@@ -19,9 +19,16 @@ function defaultFilter(exp) {
 
 export default {
   bind(el, binding) {
-    const input = findEle(el, "input");
+    let input = findEle(el, "input");
+
     if (!input) {
-      warn("[limit]", `is not a input tag use ${binding.expression}`);
+      input = findEle(el, "textarea");
+    }
+    if (!input) {
+      warn(
+        "[limit]",
+        `use v-${binding.expression} tag, not is input or textarea`
+      );
     }
     let filter = null;
     if (isRegExp(binding.value)) {

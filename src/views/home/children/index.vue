@@ -3,6 +3,7 @@
     <p>过滤 emoji 表情输入</p>
     <van-field
       label="输入"
+      type="textarea"
       v-model.trim="text"
       v-input-limit="emojiReg"
     ></van-field>
