@@ -1,9 +1,9 @@
 <template>
   <div class="mobile-layout">
     <nav-bar />
-    <section>
+    <transition name="page-slide">
       <router-view />
-    </section>
+    </transition>
     <tab-bar></tab-bar>
   </div>
 </template>

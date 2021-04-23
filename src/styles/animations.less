@@ -1,0 +1,24 @@
+
+.page-slide {
+  &-enter-active {
+    z-index: 1;
+  }
+  &-leave-active {
+    z-index: 0;
+    position: absolute;
+  }
+  &-enter {
+    transform: translateX(100%);
+  }
+  &-leave-to {
+    transform: translateX(-30%);
+  }
+}
+
+.page-slide {
+  &-enter-active,
+  &-leave-active {
+    transition: all 0.28s ease 80ms;
+   
+  }
+}
